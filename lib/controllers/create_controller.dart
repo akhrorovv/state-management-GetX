@@ -8,16 +8,22 @@ import 'package:getx/services/log_service.dart';
 class CreateController extends GetxController {
   final TextEditingController titleController = TextEditingController();
   final TextEditingController bodyController = TextEditingController();
+  bool isLoading = true;
 
   createPost() async {
     String title = titleController.text.toString().trim();
     String body = bodyController.text.toString().trim();
     Post post = Post(userId: 1, title: title, body: body);
 
+    isLoading = true;
+    update();
+
     var response =
         await Network.POST(Network.API_POST_CREATE, Network.paramsCreate(post));
     LogService.d(response!);
     PostRes postRes = Network.parsePostRes(response);
+    isLoading = false;
+    update();
     backToFinish();
   }
 

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:getx/controllers/home_controller.dart';
-import 'package:getx/models/post_model.dart';
 import 'package:getx/views/item_of_post.dart';
 
 class HomePage extends StatefulWidget {
@@ -25,9 +23,11 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: const Text("Networking"),
+        backgroundColor: Colors.grey[200],
+        title: const Text("GetX"),
+        centerTitle: true,
       ),
       body: GetBuilder<HomeController>(
         builder: (homeController) {
@@ -38,8 +38,11 @@ class _HomePageState extends State<HomePage> {
                 child: ListView.builder(
                   itemCount: homeController.posts.length,
                   itemBuilder: (ctx, index) {
-                    return itemOfPost(
-                        homeController.posts[index], homeController);
+                    return Container(
+                      padding: EdgeInsets.only(bottom: 10),
+                      child: itemOfPost(
+                          homeController.posts[index], homeController),
+                    );
                   },
                 ),
               ),

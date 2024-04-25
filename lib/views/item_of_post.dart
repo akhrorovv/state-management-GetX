@@ -12,6 +12,7 @@ Widget itemOfPost(Post post, HomeController homeController) {
           onPressed: (BuildContext context) {
             homeController.callUpdatePage(post);
           },
+          borderRadius: BorderRadius.circular(20),
           backgroundColor: Colors.orange,
           foregroundColor: Colors.white,
           icon: Icons.edit,
@@ -26,6 +27,7 @@ Widget itemOfPost(Post post, HomeController homeController) {
           onPressed: (BuildContext context) {
             homeController.deletePost(post);
           },
+          borderRadius: BorderRadius.circular(20),
           backgroundColor: const Color(0xFFFE4A49),
           foregroundColor: Colors.white,
           icon: Icons.delete,
@@ -34,8 +36,14 @@ Widget itemOfPost(Post post, HomeController homeController) {
       ],
     ),
     child: Container(
+      margin: const EdgeInsets.only(left: 10, right: 10),
       width: double.infinity,
-      padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        border: Border.all(width: 1, color: Colors.black),
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.white
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,11 +52,11 @@ Widget itemOfPost(Post post, HomeController homeController) {
             post.title!,
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
+          const Divider(),
           Text(
             post.body!,
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.normal),
           ),
-          const Divider(),
         ],
       ),
     ),

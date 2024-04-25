@@ -13,10 +13,9 @@ class HomeController extends GetxController {
     isLoading = true;
     update();
 
-    var response =
-        await Network.GET(Network.API_POST_LIST, Network.paramsEmpty());
-    LogService.d(response!);
-    List<Post> postList = Network.parsePostList(response);
+    var response = await Network.GET(Network.API_POST_LIST, Network.paramsEmpty());
+    // LogService.d(response!);
+    List<Post> postList = Network.parsePostList(response!);
 
     posts = postList;
     isLoading = false;
